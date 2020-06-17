@@ -1,7 +1,9 @@
 package vlclient
 
 import (
+	"errors"
 	"net/url"
+	"strconv"
 )
 
 const (

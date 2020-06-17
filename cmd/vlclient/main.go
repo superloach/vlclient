@@ -8,31 +8,12 @@ import (
 )
 
 var (
-	base   = flag.String("base", "", "base url")
+	base   = flag.String("base", "http://localhost:8080", "base url")
 	passwd = flag.String("passwd", "", "password")
 )
 
 func main() {
 	flag.Parse()
-	args := flag.Args()
-
-	if *base == "" {
-		if len(args) == 0 {
-			panic("please provide a base url")
-		} else {
-			*base = args[0]
-			args = args[1:]
-		}
-	}
-
-	if *passwd == "" {
-		if len(args) == 0 {
-			panic("please provide a password")
-		} else {
-			*passwd = args[0]
-			args = args[1:]
-		}
-	}
 
 	v, err := vlclient.NewVLClient(*base, *passwd)
 	if err != nil {
